@@ -1,0 +1,188 @@
+{
+  "type": "object",
+  "properties": {
+    "framework": {
+      "type": "string",
+      "widget": "Select",
+      "default": "flower",
+      "enum": [
+        "flower",
+        "fedtree",
+        "fate"
+      ]
+    },
+    "dataset": {
+      "type": "string",
+      "widget": "Select",
+      "default": "breast_horizontal",
+      "enum": [
+        "breast_horizontal",
+        "default_credit_horizontal",
+        "give_credit_horizontal",
+        "student_horizontal",
+        "vehicle_scale_horizontal",
+        "breast_vertical",
+        "default_credit_vertical",
+        "dvisits_vertical",
+        "give_credit_vertical",
+        "motor_vertical",
+        "student_vertical",
+        "vehicle_scale_vertical",
+        "celeba",
+        "femnist",
+        "reddit"
+      ]
+    },
+    "algorithm": {},
+    "model": {},
+    "deployment": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "widget": "Select",
+          "default": "local",
+          "enum": [
+            "local",
+            "colink"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "colink"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "participants": {
+                "type": "array",
+                "widget": "SimpleList",
+                "deleteOnEmpty": true,
+                "view": {
+                  "sizeXs": 12,
+                  "sizeMd": 12,
+                  "btnSize": "small"
+                },
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "tt": "ol",
+                  "minLength": 66,
+                  "maxLength": 66,
+                  "view": {
+                    "dense": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "training": {}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "framework": {
+            "const": "flower"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "algorithm": {
+            "type": "string",
+            "widget": "Select",
+            "default": "fedavg",
+            "enum": [
+              "fedavg"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "framework": {
+            "const": "fedtree"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "algorithm": {
+            "type": "string",
+            "widget": "Select",
+            "default": "secureboost",
+            "enum": [
+              "secureboost",
+              "histsecagg"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "framework": {
+            "const": "fate"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "algorithm": {
+            "type": "string",
+            "widget": "Select",
+            "default": "fedavg",
+            "enum": [
+              "fedavg",
+              "homonn",
+              "heteronn",
+              "secureboost",
+              "histsecagg",
+              "heterolinr",
+              "heterolr",
+              "heteropoisson",
+              "HeteroFastSecureBoost",
+              "homolr"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "algorithm": {
+            "const": "fedavg"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "model": {
+            "type": "string",
+            "widget": "Select",
+            "default": "mlp_128",
+            "enum": [
+              "logistic_regression",
+              "mlp_128",
+              "mlp_128_128",
+              "gbdt_64_64_6"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
