@@ -1,0 +1,24 @@
+{
+  "dataset": {
+    "type": "string",
+    "widget": "Select",
+    "default": "breast_horizontal",
+    "enum": [
+      "breast_horizontal",
+      "default_credit_horizontal",
+      "give_credit_horizontal",
+      "student_horizontal",
+      "vehicle_scale_horizontal",
+      "breast_vertical",
+      "default_credit_vertical",
+      "dvisits_vertical",
+      "give_credit_vertical",
+      "motor_vertical",
+      "student_vertical",
+      "vehicle_scale_vertical",
+      "celeba",
+      "femnist",
+      "reddit"
+    ]
+  }
+}

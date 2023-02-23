@@ -11,29 +11,8 @@
         "fate"
       ]
     },
-    "dataset": {
-      "type": "string",
-      "widget": "Select",
-      "default": "breast_horizontal",
-      "enum": [
-        "breast_horizontal",
-        "default_credit_horizontal",
-        "give_credit_horizontal",
-        "student_horizontal",
-        "vehicle_scale_horizontal",
-        "breast_vertical",
-        "default_credit_vertical",
-        "dvisits_vertical",
-        "give_credit_vertical",
-        "motor_vertical",
-        "student_vertical",
-        "vehicle_scale_vertical",
-        "celeba",
-        "femnist",
-        "reddit"
-      ]
-    },
     "algorithm": {},
+    "dataset": {},
     "model": {},
     "deployment": {
       "type": "object",
@@ -177,8 +156,98 @@
             "enum": [
               "logistic_regression",
               "mlp_128",
-              "mlp_128_128",
+              "mlp_128_128"
+            ]
+          },
+          "dataset": {
+            "type": "string",
+            "widget": "Select",
+            "default": "breast_horizontal",
+            "enum": [
+              "breast_horizontal",
+              "default_credit_horizontal",
+              "give_credit_horizontal",
+              "student_horizontal",
+              "vehicle_scale_horizontal",
+              "celeba",
+              "femnist",
+              "reddit"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "algorithm": {
+            "pattern": "secureboost|histsecagg"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "model": {
+            "type": "string",
+            "widget": "Select",
+            "default": "gbdt_64_64_6",
+            "enum": [
               "gbdt_64_64_6"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "algorithm": {
+            "const": "histsecagg"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "dataset": {
+            "type": "string",
+            "widget": "Select",
+            "default": "breast_horizontal",
+            "enum": [
+              "breast_horizontal",
+              "default_credit_horizontal",
+              "give_credit_horizontal",
+              "student_horizontal",
+              "vehicle_scale_horizontal",
+              "celeba",
+              "femnist",
+              "reddit"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "algorithm": {
+            "const": "secureboost"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "dataset": {
+            "type": "string",
+            "widget": "Select",
+            "default": "breast_horizontal",
+            "enum": [
+              "breast_vertical",
+              "default_credit_vertical",
+              "dvisits_vertical",
+              "give_credit_vertical",
+              "motor_vertical",
+              "student_vertical",
+              "vehicle_scale_vertical"
             ]
           }
         }
