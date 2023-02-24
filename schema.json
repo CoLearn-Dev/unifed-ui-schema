@@ -308,6 +308,36 @@
           }
         }
       }
+    },
+    {
+      "if": {
+        "properties": {
+          "algorithm": {
+            "pattern": "secureboost|histsecagg"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "tree_param": {
+            "type": "object",
+            "properties": {
+              "max_depth": {
+                "type": "number",
+                "default": 6
+              },
+              "n_trees": {
+                "type": "number",
+                "default": 64
+              },
+              "max_num_bin": {
+                "type": "number",
+                "default": 64
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }
