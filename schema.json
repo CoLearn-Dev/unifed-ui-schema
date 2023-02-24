@@ -285,7 +285,6 @@
               "optimizer": {
                 "type": "string",
                 "widget": "Select",
-                "default": "sgd",
                 "enum": [
                   "sgd",
                   "adam"
@@ -299,7 +298,10 @@
                     "optimizer": {
                       "const": "sgd"
                     }
-                  }
+                  },
+                  "required": [
+                    "optimizer"
+                  ]
                 },
                 "then": {
                   "properties": {
@@ -323,6 +325,26 @@
                           "default": false
                         }
                       }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "optimizer": {
+                      "const": "adam"
+                    }
+                  },
+                  "required": [
+                    "optimizer"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "optimizer_param": {
+                      "type": "object",
+                      "properties": {}
                     }
                   }
                 }
