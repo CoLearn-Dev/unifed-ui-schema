@@ -4,7 +4,6 @@
     "framework": {
       "type": "string",
       "widget": "Select",
-      "default": "flower",
       "enum": [
         "flower",
         "fedtree",
@@ -20,7 +19,6 @@
         "mode": {
           "type": "string",
           "widget": "Select",
-          "default": "local",
           "enum": [
             "local",
             "colink"
@@ -34,7 +32,10 @@
               "mode": {
                 "const": "colink"
               }
-            }
+            },
+            "required": [
+              "mode"
+            ]
           },
           "then": {
             "properties": {
@@ -72,14 +73,16 @@
           "framework": {
             "const": "flower"
           }
-        }
+        },
+        "required": [
+          "framework"
+        ]
       },
       "then": {
         "properties": {
           "algorithm": {
             "type": "string",
             "widget": "Select",
-            "default": "fedavg",
             "enum": [
               "fedavg"
             ]
@@ -93,14 +96,16 @@
           "framework": {
             "const": "fedtree"
           }
-        }
+        },
+        "required": [
+          "framework"
+        ]
       },
       "then": {
         "properties": {
           "algorithm": {
             "type": "string",
             "widget": "Select",
-            "default": "secureboost",
             "enum": [
               "secureboost",
               "histsecagg"
@@ -115,14 +120,16 @@
           "framework": {
             "const": "fate"
           }
-        }
+        },
+        "required": [
+          "framework"
+        ]
       },
       "then": {
         "properties": {
           "algorithm": {
             "type": "string",
             "widget": "Select",
-            "default": "fedavg",
             "enum": [
               "fedavg",
               "homonn",
@@ -142,14 +149,16 @@
           "algorithm": {
             "pattern": "fedavg|homonn|heteronn"
           }
-        }
+        },
+        "required": [
+          "algorithm"
+        ]
       },
       "then": {
         "properties": {
           "model": {
             "type": "string",
             "widget": "Select",
-            "default": "mlp_128",
             "enum": [
               "logistic_regression",
               "mlp_128",
@@ -165,14 +174,16 @@
           "algorithm": {
             "pattern": "secureboost|histsecagg"
           }
-        }
+        },
+        "required": [
+          "algorithm"
+        ]
       },
       "then": {
         "properties": {
           "model": {
             "type": "string",
             "widget": "Select",
-            "default": "gbdt_64_64_6",
             "enum": [
               "gbdt_64_64_6"
             ]
@@ -186,14 +197,16 @@
           "algorithm": {
             "pattern": "fedavg|homonn|histsecagg"
           }
-        }
+        },
+        "required": [
+          "algorithm"
+        ]
       },
       "then": {
         "properties": {
           "dataset": {
             "type": "string",
             "widget": "Select",
-            "default": "breast_horizontal",
             "enum": [
               "breast_horizontal",
               "default_credit_horizontal",
@@ -214,14 +227,16 @@
           "algorithm": {
             "pattern": "heteronn|secureboost"
           }
-        }
+        },
+        "required": [
+          "algorithm"
+        ]
       },
       "then": {
         "properties": {
           "dataset": {
             "type": "string",
             "widget": "Select",
-            "default": "breast_horizontal",
             "enum": [
               "breast_vertical",
               "default_credit_vertical",
@@ -241,7 +256,10 @@
           "algorithm": {
             "pattern": "fedavg|homonn|heteronn"
           }
-        }
+        },
+        "required": [
+          "algorithm"
+        ]
       },
       "then": {
         "properties": {
@@ -320,7 +338,10 @@
           "algorithm": {
             "pattern": "secureboost|histsecagg"
           }
-        }
+        },
+        "required": [
+          "algorithm"
+        ]
       },
       "then": {
         "properties": {
