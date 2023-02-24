@@ -285,21 +285,26 @@
                 },
                 "then": {
                   "properties": {
-                    "momentum": {
-                      "type": "number",
-                      "default": 0.9
-                    },
-                    "dampening": {
-                      "type": "number",
-                      "default": 0
-                    },
-                    "weight_decay": {
-                      "type": "number",
-                      "default": 0
-                    },
-                    "nesterov": {
-                      "type": "boolean",
-                      "default": false
+                    "optimizer_param": {
+                      "type": "object",
+                      "properties": {
+                        "momentum": {
+                          "type": "number",
+                          "default": 0.9
+                        },
+                        "dampening": {
+                          "type": "number",
+                          "default": 0
+                        },
+                        "weight_decay": {
+                          "type": "number",
+                          "default": 0
+                        },
+                        "nesterov": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      }
                     }
                   }
                 }
@@ -319,20 +324,25 @@
       },
       "then": {
         "properties": {
-          "tree_param": {
+          "training": {
             "type": "object",
             "properties": {
-              "max_depth": {
-                "type": "number",
-                "default": 6
-              },
-              "n_trees": {
-                "type": "number",
-                "default": 64
-              },
-              "max_num_bin": {
-                "type": "number",
-                "default": 64
+              "tree_param": {
+                "type": "object",
+                "properties": {
+                  "max_depth": {
+                    "type": "number",
+                    "default": 6
+                  },
+                  "n_trees": {
+                    "type": "number",
+                    "default": 64
+                  },
+                  "max_num_bin": {
+                    "type": "number",
+                    "default": 64
+                  }
+                }
               }
             }
           }
