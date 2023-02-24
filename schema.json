@@ -129,10 +129,7 @@
               "heteronn",
               "secureboost",
               "histsecagg",
-              "heterolinr",
               "heterolr",
-              "heteropoisson",
-              "HeteroFastSecureBoost",
               "homolr"
             ]
           }
@@ -143,7 +140,7 @@
       "if": {
         "properties": {
           "algorithm": {
-            "const": "fedavg"
+            "pattern": "fedavg|homonn|heteronn"
           }
         }
       },
@@ -157,21 +154,6 @@
               "logistic_regression",
               "mlp_128",
               "mlp_128_128"
-            ]
-          },
-          "dataset": {
-            "type": "string",
-            "widget": "Select",
-            "default": "breast_horizontal",
-            "enum": [
-              "breast_horizontal",
-              "default_credit_horizontal",
-              "give_credit_horizontal",
-              "student_horizontal",
-              "vehicle_scale_horizontal",
-              "celeba",
-              "femnist",
-              "reddit"
             ]
           }
         }
@@ -202,7 +184,7 @@
       "if": {
         "properties": {
           "algorithm": {
-            "const": "histsecagg"
+            "pattern": "fedavg|homonn|histsecagg"
           }
         }
       },
@@ -230,7 +212,7 @@
       "if": {
         "properties": {
           "algorithm": {
-            "const": "secureboost"
+            "pattern": "heteronn|secureboost"
           }
         }
       },
@@ -248,6 +230,80 @@
               "motor_vertical",
               "student_vertical",
               "vehicle_scale_vertical"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "algorithm": {
+            "pattern": "fedavg|homonn|heteronn"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "training": {
+            "type": "object",
+            "properties": {
+              "epochs": {
+                "type": "number",
+                "default": 30
+              },
+              "batch_size": {
+                "type": "number",
+                "default": 32
+              },
+              "learning_rate": {
+                "type": "number",
+                "default": 0.01
+              },
+              "client_per_round": {
+                "type": "number",
+                "default": 2
+              },
+              "optimizer": {
+                "type": "string",
+                "widget": "Select",
+                "default": "sgd",
+                "enum": [
+                  "sgd",
+                  "adam"
+                ]
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "optimizer": {
+                      "const": "sgd"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "momentum": {
+                      "type": "number",
+                      "default": 0.9
+                    },
+                    "dampening": {
+                      "type": "number",
+                      "default": 0
+                    },
+                    "weight_decay": {
+                      "type": "number",
+                      "default": 0
+                    },
+                    "nesterov": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                }
+              }
             ]
           }
         }
