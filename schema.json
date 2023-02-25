@@ -25,6 +25,9 @@
           ]
         }
       },
+      "required": [
+        "mode"
+      ],
       "allOf": [
         {
           "if": {
@@ -59,13 +62,24 @@
                   }
                 }
               }
-            }
+            },
+            "required": [
+              "participants"
+            ]
           }
         }
       ]
     },
     "training": {}
   },
+  "required": [
+    "framework",
+    "algorithm",
+    "dataset",
+    "model",
+    "deployment",
+    "training"
+  ],
   "allOf": [
     {
       "if": {
@@ -291,6 +305,13 @@
                 ]
               }
             },
+            "required": [
+              "epochs",
+              "batch_size",
+              "learning_rate",
+              "client_per_round",
+              "optimizer"
+            ],
             "allOf": [
               {
                 "if": {
