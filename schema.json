@@ -44,22 +44,28 @@
             "properties": {
               "participants": {
                 "type": "array",
-                "widget": "SimpleList",
-                "deleteOnEmpty": true,
+                "widget": "Table",
                 "view": {
-                  "sizeXs": 12,
-                  "sizeMd": 12,
-                  "btnSize": "small"
+                  "dense": true
                 },
                 "minItems": 1,
                 "items": {
-                  "type": "string",
-                  "tt": "ol",
-                  "minLength": 66,
-                  "maxLength": 66,
-                  "view": {
-                    "dense": true
-                  }
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string",
+                      "minLength": 66,
+                      "maxLength": 66,
+                      "default": "",
+                      "title": "user_id"
+                    },
+                    {
+                      "type": "string",
+                      "minLength": 1,
+                      "default": "",
+                      "title": "role"
+                    }
+                  ]
                 }
               }
             },
