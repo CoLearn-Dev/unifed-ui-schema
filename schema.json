@@ -44,28 +44,23 @@
             "properties": {
               "participants": {
                 "type": "array",
-                "widget": "Table",
-                "view": {
-                  "dense": true
-                },
+                "widget": "GenericList",
                 "minItems": 1,
                 "items": {
-                  "type": "array",
-                  "items": [
-                    {
+                  "type": "object",
+                  "properties": {
+                    "user_id": {
                       "type": "string",
                       "minLength": 66,
                       "maxLength": 66,
-                      "default": "",
-                      "title": "user_id"
+                      "default": ""
                     },
-                    {
+                    "role": {
                       "type": "string",
                       "minLength": 1,
-                      "default": "",
-                      "title": "role"
+                      "default": ""
                     }
-                  ]
+                  }
                 }
               }
             },
