@@ -13,6 +13,7 @@
     "algorithm": {},
     "dataset": {},
     "model": {},
+    "training": {},
     "deployment": {
       "type": "object",
       "properties": {
@@ -70,8 +71,7 @@
           }
         }
       ]
-    },
-    "training": {}
+    }
   },
   "required": [
     "framework",
