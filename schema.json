@@ -23,6 +23,7 @@
           "widget": "Select",
           "enum": [
             "local",
+            "colink-default",
             "colink"
           ]
         }
