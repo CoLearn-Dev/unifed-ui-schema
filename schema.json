@@ -278,6 +278,7 @@
           }
         },
         "required": [
+          "framework",
           "algorithm"
         ]
       },
@@ -286,33 +287,10 @@
           "training": {
             "type": "object",
             "properties": {
-              "global_epochs": {
-                "type": "number",
-                "default": 30
-              },
+              "global_epochs": {},
               "local_epochs": {
                 "type": "number",
                 "default": 1
-              },
-              "batch_size": {
-                "type": "number",
-                "default": 32
-              },
-              "learning_rate": {
-                "type": "number",
-                "default": 0.01
-              },
-              "client_per_round": {
-                "type": "number",
-                "default": 2
-              },
-              "optimizer": {
-                "type": "string",
-                "widget": "Select",
-                "enum": [
-                  "sgd",
-                  "adam"
-                ]
               }
             },
             "required": [
@@ -322,65 +300,6 @@
               "learning_rate",
               "client_per_round",
               "optimizer"
-            ],
-            "allOf": [
-              {
-                "if": {
-                  "properties": {
-                    "optimizer": {
-                      "const": "sgd"
-                    }
-                  },
-                  "required": [
-                    "optimizer"
-                  ]
-                },
-                "then": {
-                  "properties": {
-                    "optimizer_param": {
-                      "type": "object",
-                      "properties": {
-                        "momentum": {
-                          "type": "number",
-                          "default": 0.9
-                        },
-                        "dampening": {
-                          "type": "number",
-                          "default": 0
-                        },
-                        "weight_decay": {
-                          "type": "number",
-                          "default": 0
-                        },
-                        "nesterov": {
-                          "type": "boolean",
-                          "default": false
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "if": {
-                  "properties": {
-                    "optimizer": {
-                      "const": "adam"
-                    }
-                  },
-                  "required": [
-                    "optimizer"
-                  ]
-                },
-                "then": {
-                  "properties": {
-                    "optimizer_param": {
-                      "type": "object",
-                      "properties": {}
-                    }
-                  }
-                }
-              }
             ]
           }
         }
