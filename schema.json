@@ -392,6 +392,10 @@
           "training": {
             "type": "object",
             "properties": {
+              "learning_rate": {
+                "type": "number",
+                "default": 0.1
+              },
               "tree_param": {
                 "type": "object",
                 "properties": {
