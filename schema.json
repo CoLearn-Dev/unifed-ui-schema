@@ -299,6 +299,7 @@
               "batch_size",
               "learning_rate",
               "client_per_round",
+              "loss_func",
               "optimizer"
             ]
           }
@@ -337,6 +338,13 @@
                 "type": "number",
                 "default": 2
               },
+              "loss_func": {
+                "type": "string",
+                "widget": "Select",
+                "enum": [
+                  "cross_entropy"
+                ]
+              },
               "optimizer": {
                 "type": "string",
                 "widget": "Select",
@@ -351,6 +359,7 @@
               "batch_size",
               "learning_rate",
               "client_per_round",
+              "loss_func",
               "optimizer"
             ],
             "allOf": [
