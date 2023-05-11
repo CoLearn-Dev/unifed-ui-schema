@@ -7,8 +7,15 @@
       "enum": [
         "flower",
         "fedtree",
+        "crypten",
+        "fedml",
         "fate",
-        "tff"
+        "tff",
+        "paddlefl",
+        "fedscale",
+        "federatedscope",
+        "fedlearner",
+        "flute"
       ]
     },
     "algorithm": {},
@@ -88,7 +95,7 @@
       "if": {
         "properties": {
           "framework": {
-            "pattern": "flower|tff"
+            "pattern": "flower|federatedscope|tff|paddlefl|fedscale"
           }
         },
         "required": [
@@ -271,7 +278,7 @@
       "if": {
         "properties": {
           "framework": {
-            "pattern": "tff"
+            "pattern": "tff|paddlefl"
           },
           "algorithm": {
             "pattern": "fedavg|homonn|heteronn"
@@ -296,6 +303,45 @@
             "required": [
               "global_epochs",
               "local_epochs",
+              "batch_size",
+              "learning_rate",
+              "client_per_round",
+              "loss_func",
+              "optimizer"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "framework": {
+            "pattern": "fedlearner"
+          },
+          "algorithm": {
+            "pattern": "fedavg|homonn|heteronn"
+          }
+        },
+        "required": [
+          "framework",
+          "algorithm"
+        ]
+      },
+      "then": {
+        "properties": {
+          "training": {
+            "type": "object",
+            "properties": {
+              "global_epochs": {},
+              "steps_per_sync": {
+                "type": "number",
+                "default": 1
+              }
+            },
+            "required": [
+              "global_epochs",
+              "steps_per_sync",
               "batch_size",
               "learning_rate",
               "client_per_round",
