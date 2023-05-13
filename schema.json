@@ -10,7 +10,7 @@
         "crypten",
         "fedml",
         "fate",
-        "tff",
+        "tensorflow_federated",
         "paddlefl",
         "fedscale",
         "federatedscope",
@@ -95,7 +95,7 @@
       "if": {
         "properties": {
           "framework": {
-            "pattern": "flower|federatedscope|tff|paddlefl|fedscale|fedlearner|flute"
+            "pattern": "flower|federatedscope|tensorflow_federated|paddlefl|fedscale|fedlearner|flute"
           }
         },
         "required": [
@@ -348,7 +348,7 @@
       "if": {
         "properties": {
           "framework": {
-            "pattern": "tff|paddlefl"
+            "pattern": "tensorflow_federated|paddlefl"
           },
           "algorithm": {
             "pattern": "fedavg|homonn"
