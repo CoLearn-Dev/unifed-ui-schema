@@ -256,7 +256,7 @@
             "enum": [
               "logistic_regression",
               "mlp_128",
-              "mlp_128_128"
+              "mlp_128_128_128"
             ]
           }
         }
@@ -351,7 +351,7 @@
             "pattern": "tff|paddlefl"
           },
           "algorithm": {
-            "pattern": "fedavg|homonn|heteronn"
+            "pattern": "fedavg|homonn"
           }
         },
         "required": [
@@ -426,6 +426,42 @@
       "if": {
         "properties": {
           "algorithm": {
+            "pattern": "fedavg|homonn"
+          }
+        },
+        "required": [
+          "algorithm"
+        ]
+      },
+      "then": {
+        "properties": {
+          "training": {
+            "type": "object",
+            "properties": {
+              "global_epochs": {},
+              "batch_size": {},
+              "learning_rate": {},
+              "client_per_round": {
+                "type": "number",
+                "default": 2
+              }
+            },
+            "required": [
+              "global_epochs",
+              "batch_size",
+              "learning_rate",
+              "client_per_round",
+              "loss_func",
+              "optimizer"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "algorithm": {
             "pattern": "fedavg|homonn|heteronn|heterolr|mpc"
           }
         },
@@ -450,10 +486,6 @@
                 "type": "number",
                 "default": 0.01
               },
-              "client_per_round": {
-                "type": "number",
-                "default": 2
-              },
               "loss_func": {
                 "type": "string",
                 "widget": "Select",
@@ -474,7 +506,6 @@
               "global_epochs",
               "batch_size",
               "learning_rate",
-              "client_per_round",
               "loss_func",
               "optimizer"
             ],
